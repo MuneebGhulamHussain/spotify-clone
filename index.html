@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- navbar -->
+    <nav class="nav-bar-continer">
+        <ul>
+            <li class="logo-handle">
+                <img src="./images/logo.png" alt="">
+                <span>Spotify</span>
+            </li>
+            <li id="list1">Home</li>
+            <li id="list2">About</li>
+            <!-- <button onclick="audioPlay()">play</button> -->
+        </ul>
+    </nav>
+    <!-- navbar -->
+
+
+
+    <!-- body cconatiner -->
+    <div class="body-container-extra">
+        <div class="first-container">
+
+            <h1>NCS Songs</h1>
+                <div class="extra-song-ontainer" id="songAppend">
+                    <!-- <div id="songContainer" class="song-container">
+                        <img src="./covers/10.jpg" alt="">
+                        <div class="innerspan">
+                        <span class="song-name">Let me Love you</span>
+                        <span class="time-span">5 : 34  <i class="fa-regular fa-circle-play"></i></span>
+                            </div>
+                    </div> -->
+                     
+                    
+                  
+                </div>
+        </div>
+    </div>
+    <!-- body cconatiner -->
+
+    <!-- footer -->
+     <footer class="bottom">
+        <input type="range" name="" id="range" min="0" value="0" max="100">
+        <div class="font-awesome">
+            <i class="fa-solid fa-2x fa-backward-step"></i>
+            <i id="playIcon" class="fa-regular fa-2x fa-circle-play"></i>
+            <i class="fa-solid fa-2x fa-forward-step"></i>
+        </div>
+        <div class="gif">
+            <img id="gif" src="./playing.gif" alt=""><span id="songNameBottom">Let me love You-Justin Bieber</span>
+        </div>
+     </footer>
+    <!-- footer -->
+
+
+</body>
+<script src="app.js"></script>
+</html>
