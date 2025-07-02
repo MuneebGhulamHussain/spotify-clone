@@ -181,7 +181,7 @@ font-family:'Varela Round',sans-serif;
 }
 .song-container{
     /* margin-top: 10px; */
-    height: 60px;
+    height: 40px !important;
     /* display: flex; */
     
 }
