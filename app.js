@@ -195,9 +195,6 @@ forwordSong.addEventListener("click", () => {
 
 
 
-
-let previousSong = document.getElementById("previousSong");
-
 previousSong.addEventListener("click", () => {
     if (indexSong === undefined || indexSong === null) {
         indexSong = 0;
@@ -208,8 +205,20 @@ previousSong.addEventListener("click", () => {
         }
     }
 
-    audioPlayInitial.src = songsDetails[indexSong].songPath;
-    audioPlayInitial.play();
+    audioPlayInitial.pause();
+    audioPlayInitial.currentTime = 0;
+
+    const songPath = encodeURI(songsDetails[indexSong].songPath);
+    audioPlayInitial.src = songPath;
+
+    audioPlayInitial.play()
+        .then(() => {
+            console.log("Playback started");
+        })
+        .catch((err) => {
+            console.error("Playback failed:", err);
+        });
+
     songNameBottom.innerHTML = songsDetails[indexSong].songName;
     playIcon.className = "fa-regular fa-2x fa-circle-pause";
     gif.style.opacity = 1;
