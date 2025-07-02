@@ -1,7 +1,7 @@
 let playIcon=document.getElementById("playIcon")
 let audioPlayInitial=new Audio("songs/1.mp3")
 let range=document.getElementById("range")
-let indexSong=0
+let indexSong
 let gif=document.getElementById("gif")
 
 
@@ -91,9 +91,9 @@ individualSong.addEventListener("loadedmetadata", () => {
     console.log(getDuration)
 
     let getMin=Math.floor(getDuration/60)
-    console.log(getMin)
+    // console.log(getMin)
     let getSec=Math.floor(getDuration%60)
-    console.log(getSec)
+    // console.log(getSec)
 
     
     let finalSec
@@ -103,35 +103,34 @@ individualSong.addEventListener("loadedmetadata", () => {
     else{
         finalSec=getSec
     }
+    localStorage.setItem("min",getMin)
+    localStorage.setItem("sec",finalSec)
+    // songAppend.innerHTML+=  `<div  class="song-container">
+    //                      <img src="${element.coverPath}" alt="">
+    //                      <div class="innerspan">
+    //                      <span class="song-name">${element.songName}</span>
+    //                      <span class="time-span"><span>${getMin}</span> : <span>${finalSec}</span>  <i onclick="iconClick(this)" class="fa-regular fa-circle-play icons"></i></span>
+    //                      </div>
+    //                  </div>`
+});
+    let min=localStorage.getItem("min")
+    let sec=localStorage.getItem("sec")
+
     songAppend.innerHTML+=  `<div  class="song-container">
                          <img src="${element.coverPath}" alt="">
                          <div class="innerspan">
                          <span class="song-name">${element.songName}</span>
-                         <span class="time-span"><span>${getMin}</span> : <span>${finalSec}</span>  <i onclick="iconClick(this)" class="fa-regular fa-circle-play icons"></i></span>
+                         <span class="time-span"><span></span> : <span></span>  <i onclick="iconClick(this)" class="fa-regular fa-circle-play icons"></i></span>
                          </div>
                      </div>`
-});
-    // console.log(element)
-
 })
-// function iconClick(element){
-//     // console.log("element",element)
-  
-//     let arr=songAppend.children
-//     let icons=document.getElementsByClassName("icons")
-//     console.log(icons)
-    
-//       if(element.className=="fa-regular fa-circle-play icons" ){
-//     element.className="fa-regular fa-circle-pause icons"
-      
-//     }else{
-//         element.className="fa-regular fa-circle-play icons"
-//     }
 
-// }
 
-// let currentlyPlayingAudio = null;
-// let currentlyPlayingIndex = null;
+
+
+
+
+
 
 localStorage.setItem("classname","fa-regular fa-circle-pause icons")
 
@@ -160,6 +159,7 @@ function iconClick(element) {
     let userChoice=element.parentNode.previousElementSibling.innerText
     for(var i=0;i<songsDetails.length;i++){
         if(songsDetails[i].songName==userChoice){
+            indexSong=i
             songNameBottom.innerHTML=songsDetails[i].songName
              gif.style.opacity=1
             audioPlayInitial.src=songsDetails[i].songPath
@@ -173,3 +173,45 @@ function iconClick(element) {
     }
     // console.log(element.parentNode.previousElementSibling.innerText,"current song")
 }
+
+let forwordSong = document.getElementById("forwordSong");
+forwordSong.addEventListener("click", () => {
+    if (indexSong === undefined || indexSong === null) {
+        indexSong = 0;
+    } else {
+        indexSong++;
+        if (indexSong >= songsDetails.length) {
+            indexSong = 0;
+        }
+    }
+
+    audioPlayInitial.src = songsDetails[indexSong].songPath;
+    audioPlayInitial.play();
+    songNameBottom.innerHTML = songsDetails[indexSong].songName;
+    playIcon.className = "fa-regular fa-2x fa-circle-pause";
+    gif.style.opacity = 1;
+});
+
+
+
+
+
+let previousSong = document.getElementById("previousSong");
+
+previousSong.addEventListener("click", () => {
+    if (indexSong === undefined || indexSong === null) {
+        indexSong = 0;
+    } else {
+        indexSong--;
+        if (indexSong < 0) {
+            indexSong = songsDetails.length - 1;
+        }
+    }
+
+    audioPlayInitial.src = songsDetails[indexSong].songPath;
+    audioPlayInitial.play();
+    songNameBottom.innerHTML = songsDetails[indexSong].songName;
+    playIcon.className = "fa-regular fa-2x fa-circle-pause";
+    gif.style.opacity = 1;
+});
+

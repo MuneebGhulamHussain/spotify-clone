@@ -158,6 +158,8 @@ font-family:'Varela Round',sans-serif;
     height: 75vh;
     margin-top: 25px !important;
     margin-bottom: 425px !important;
+    /* padding-top: 20px; */
+
     /* border: 2px solid orange; */
 }
 .first-container h1{
@@ -178,7 +180,7 @@ font-family:'Varela Round',sans-serif;
     /* margin-top: 100px; */
 }
 .song-container{
-    margin-top: 30px;
+    margin-top: 15px;
     height: 60px;
     /* display: flex; */
     
@@ -188,7 +190,5 @@ font-family:'Varela Round',sans-serif;
     /* border: 1px solid yellow; */
     margin-left: -40px !important;
 }
-.gif{
-    /* bottom: 2vw; */
-}
+
 }
